@@ -1,0 +1,182 @@
+html, body {
+    margin: 0;
+}
+
+body {
+    background: url("assets/arcpet.png");
+    background-size: 20rem;
+    font-family: Pixeloid;
+    text-align: center;
+    color:#322667;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    box-sizing: border-box;
+    padding: clamp(1rem, 4vw, 4rem);
+    padding-left: 0;
+    padding-right: 0;
+    min-height: min(100svh, 100dvh);
+
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;                 /* Universal support since 2021   */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+}
+
+::selection{
+    background-color: rgb(255, 231, 217);
+    color:#000;
+}
+
+h1, h2, h3, h4 {
+    font-family: GameBoy;
+    text-align: center;
+    background: linear-gradient(to right, #aadaff, #ffaacf, #ffe3aa);
+    background-clip: text;
+    color: transparent;
+}
+
+img{
+    width: 40dvw;
+}
+
+a{
+    color:#ffaacf
+}
+
+ul>li{
+    list-style:square;
+    text-align: left;
+}
+
+.title {
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translate(-50%, -60%) scale(2.5);
+    filter: drop-shadow(0 0.5rem 30px #FFF);
+    z-index: 1;
+}
+
+.flex {
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    padding-top: 3rem;
+    width: 100%;
+
+}
+
+.main {
+    background: linear-gradient(#aadaff, #ffaacf, #ffe3aa);
+    border-radius: 1rem;
+    padding: 0.5em;
+    height: fit-content;
+    max-width: 100%;
+
+}
+
+.main > div{
+    border:#FFF solid 1rem;
+    background-color: #FFF;
+    border-radius: 1rem;
+    min-width: 0;
+    max-width: 100%;
+    height:55dvh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
+.columns{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items:center;
+    vertical-align: top;
+    justify-content:center;
+    text-align: justify;
+}
+
+.columns > div {
+    width:100%;
+    padding: 0.5rem;
+}
+
+@font-face {
+    font-family: Pixeloid;
+    src: url("assets/fonts/PixeloidSans.ttf");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Pixeloid;
+    src: url("assets/fonts/PixeloidSans-Bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: GameBoy;
+    src: url("assets/fonts/Early GameBoy.ttf");
+}
+
+.footer {
+    position: absolute;
+    left:0;
+    bottom:1rem;
+    width:100%;
+    height:1.2rem;
+    background-color: #FFF;
+    text-align: center;
+}
+
+.bluewavy{
+    text-decoration: underline wavy; color: #aadaff
+}
+
+.pinkwavy{
+    text-decoration: underline wavy; color: #ffaacf
+}
+
+.yellowwavy{
+    text-decoration: underline wavy;
+    background: #ffe3aa;
+}
+
+@media screen and (min-width:720px) {
+    .columns {
+        flex-direction: row;
+        align-items: start;
+    }
+    .columns > div {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width:450px){
+    body {
+        padding:4rem;
+        align-items:center;
+        justify-content: center;
+    }
+
+    .flex {
+        flex-direction: row;
+        width:600px;
+    }
+    .spacer {
+        width:25%
+    }
+    .title {
+        transform: translate(-50%, -60%) scale(0.8);
+    }
+
+}

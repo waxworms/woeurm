@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="description" content="artist and lover of things">
+        <meta name="keywords" content="woeurm, waxworm">
+        <meta name="author" content="woeurm">
+        
+        <title>woeurm - the site</title>
+
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <style>
+        .widget {
+            display: flex;
+            justify-content: flex-start;
+            padding:1rem;
+            margin:0;
+            width:100%;
+            vertical-align: middle;
+            flex-direction: column;
+            border-radius: 0 0 1rem 1rem;
+            border: 0.5em solid #ffaacf;
+        }
+        .widget a{
+            color:#322667;
+            /* text-decoration: underline solid; */
+        }
+        .widget div {
+            padding:3px
+        }
+        #albumCover img {
+            width: 100%;
+            border-radius: 1rem;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <div class="flex">
+            
+
+            <div class="spacer"></div>
+
+            <div class="main">
+                <div>
+                    <div class="title">
+                        <img src="assets/woeurm.gif">
+                    </div>
+
+                    <h1>WELCOME!</h1>
+                    <p>
+                        Hey! This site is a <b>LIGHT</b> work in progress! I literally only need to finish the 
+                        P:P page before I'm done with this site. 
+                        <span class="bluewavy">Check back soon!</span>
+                    </p>                    
+                    <div class="columns">
+                        <div>
+                            <p style="background: #ffaacf; margin-bottom: 0; border-radius: 1rem 1rem 0 0; padding:0.5em">Last played:</p>
+                            <div class="widget">
+                                <div id="albumCover"></div>
+                                <div id="song"></div>
+                            </div>
+                                <script type="text/javascript">
+                                    let user = 'waxworm_';
+                                    let url = 'https://lastfm-last-played.biancarosa.com.br/' + user + '/latest-song';
+                                    let song = document.querySelector('#song');
+                                    let albumCover = document.querySelector("#albumCover")
+                                    fetch(url)
+                                        .then(function (response) {
+                                            return response.json()
+                                        }).then(function (json) {
+                                            let albumCoverUrl = json["track"]["image"] ? json["track"]["image"][2]["#text"] : null; // 0=small, 1=medium, 2=large, 3=extralarge
+                                            let songUrl = json["track"]["url"]
+                                            song.innerHTML = '<a href='+songUrl+'><marquee>'+json['track']['artist']['#text'] + ' - ' + json['track']['name']+'</marquee></a>';
+                                            albumCover.innerHTML='<img src="'+albumCoverUrl+'">' 
+                                        });
+                                </script>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>If you want to find out more about me, <span class="bluewavy">navigate to the About page!</span></li>
+                                <li>If you're here to check out my art, <span class="pinkwavy">navigate to the Contact page!</span></li>
+                                <li>If you want to know more about my project/OCs, <span class="yellowwavy">navigate to the P:P page!</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>
+                        When you're ready, 
+                        <span class="bluewavy">press the can in the corner</span> 
+                        to navigate the site!
+                    </p>
+                    <p>P.S. Thanks for the can, Jamie!</p>
+                </div>
+            </div>
+            <div class="spacer"></div>
+        </div>
+        <div class="footer">
+            woeurm &#169; 2026 
+        </div>
+
+        <div data-worm-menu='[
+            {"label": "Home", "url": "/"},
+            {"label": "About", "url": "/about"},
+            {"label": "Contact", "url": "/contact"},
+            {"label": "P:P", "url": "/payloadprocessed"}
+            ]'></div>
+        <script src="assets/can/worm-menu.js"></script>
+    </body>
+
+</html>
